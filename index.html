@@ -117,10 +117,12 @@
 }
         }/* Animation Zustand */
 .email-form button.loading {
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  border-radius: 50%;
+  width: 50px !important;
+  min-width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  color: transparent;
 }
 
 /* Rollen Animation */
@@ -135,6 +137,7 @@
 
 .email-form button.roll {
   animation: rollLeft 0.8s ease forwards;
+  display: inline-block;
 }
 
         .email-form button:hover {
