@@ -329,7 +329,32 @@
                 display: none;
             }
         }
-    </style>
+        .scroll-hint {
+  display: none;
+}
+
+#success-msg {
+  color: #FF8C00;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#writer-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #FF8C00;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+#typed-text {
+  color: #FF8C00;
+}
+
+</style>
 </head>
 <body>
     <!-- HERO SECTION -->
@@ -350,10 +375,10 @@
   <button type="submit" id="submit-btn">Anmelden</button>
 </form>
          
-    <p id="success-msg" style="display:none; margin-top:20px; font-size:18px; font-weight:500;">
-  Du bist dabei.<br>
-  Das ist erst der Anfang.
-</p>
+    <div id="success-msg" style="display:none; margin-top:20px;">
+  <span id="writer-dot"></span>
+  <span id="typed-text"></span>
+</div>
             <p class="footer-text">
                 Kostenlos, spamfrei, jederzeit kündbar
             </p>
@@ -477,21 +502,24 @@
     });
 
     if (response.ok) {
-  const btn = document.getElementById("submit-btn");
+  const typedText = document.getElementById("typed-text");
+  const message = "Du bist dabei. Das ist erst der Anfang.";
+  let i = 0;
 
-  // 1. Button wird Kreis
-  btn.classList.add("loading");
+  form.style.display = "none";
+  successMsg.style.display = "block";
+  typedText.textContent = "";
 
-  // 2. Rollen starten
-  setTimeout(() => {
-    btn.classList.add("roll");
-  }, 200);
+  function typeWriter() {
+    if (i < message.length) {
+      typedText.textContent += message.charAt(i);
+      i++;
+      setTimeout(typeWriter, 45);
+    }
+  }
 
-  // 3. Danach UI wechseln
-  setTimeout(() => {
-    form.style.display = "none";
-    successMsg.style.display = "block";
-  }, 900);
+  typeWriter();
+}
 
 } else {
   alert("Fehler. Bitte nochmal versuchen.");
