@@ -102,17 +102,40 @@
         }
 
         .email-form button {
-            padding: 16px 28px;
-            background: #FF8C00;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 15px;
-            white-space: nowrap;
-        }
+  padding: 16px 28px;
+  background: #FF8C00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  /* NEU */
+  position: relative;
+  overflow: hidden;
+}
+        }/* Animation Zustand */
+.email-form button.loading {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Rollen Animation */
+@keyframes rollLeft {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-120px) rotate(-360deg);
+  }
+}
+
+.email-form button.roll {
+  animation: rollLeft 0.8s ease forwards;
+}
 
         .email-form button:hover {
             background: #E67E00;
@@ -321,7 +344,7 @@
             
             <form id="email-form" class="email-form">
   <input type="email" name="email" placeholder="deine@email.com" required>
-  <button type="submit">Anmelden</button>
+  <button type="submit" id="submit-btn">Anmelden</button>
 </form>
          
     <p id="success-msg" style="display:none; margin-top:20px; font-size:18px; font-weight:500;">
@@ -451,11 +474,25 @@
     });
 
     if (response.ok) {
-      form.style.display = "none";
-      successMsg.style.display = "block";
-    } else {
-      alert("Fehler. Bitte nochmal versuchen.");
-    }
+  const btn = document.getElementById("submit-btn");
+
+  // 1. Button wird Kreis
+  btn.classList.add("loading");
+
+  // 2. Rollen starten
+  setTimeout(() => {
+    btn.classList.add("roll");
+  }, 200);
+
+  // 3. Danach UI wechseln
+  setTimeout(() => {
+    form.style.display = "none";
+    successMsg.style.display = "block";
+  }, 900);
+
+} else {
+  alert("Fehler. Bitte nochmal versuchen.");
+}
   });
 </script>
 </body></html>
