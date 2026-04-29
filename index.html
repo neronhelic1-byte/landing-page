@@ -362,9 +362,25 @@
   color: #000000;
   line-height: 1.6;
 }
+    body {
+  cursor: none;
+}
+
+#custom-cursor {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: #ff6a00;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
 </style>
 </head>
 <body>
+    <div id="custom-cursor"></div>
+    
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-container">
@@ -541,4 +557,12 @@
 <a href="impressum.html" style="color:#ff6a00;">Impressum</a> | 
 <a href="datenschutz.html" style="color:#ff6a00;">Datenschutz</a>
 </p>
+    <script>
+  const cursor = document.getElementById('custom-cursor');
+
+  document.addEventListener('mousemove', function(e) {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+</script>
 </body></html>
