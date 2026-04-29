@@ -1,0 +1,10 @@
+<svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg">
+  <text x="20" y="82"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
+        font-size="72"
+        font-weight="700"
+        fill="#000000">
+    dabei
+  </text>
+  <circle cx="220" cy="72" r="7" fill="#FF8C00"/>
+</svg>
