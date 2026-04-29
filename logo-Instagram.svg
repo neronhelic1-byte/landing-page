@@ -7,10 +7,10 @@
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
         font-size="110"
         font-weight="700"
-        fill="#FFFFFF">
+        fill="#000000">
     dabei
   </text>
 
-  <circle cx="410" cy="274" r="9" fill="#FF8C00"/>
+  <circle cx="410" cy="274" r="9" fill="##ff6a00"/>
 
 </svg>
