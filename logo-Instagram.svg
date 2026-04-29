@@ -3,14 +3,17 @@
   <!-- Hintergrund -->
   <rect width="512" height="512" fill="#FFF5E9"/>
 
-  <!-- Text MIT Punkt -->
+  <!-- Text -->
   <text x="50%" y="55%"
         text-anchor="middle"
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
-        font-size="110"
+        font-size="160"
         font-weight="700"
         fill="#000000">
-    dabei<tspan fill="#FF8C00">.</tspan>
+    dabei
   </text>
+
+  <!-- Punkt -->
+  <circle cx="360" cy="245" r="14" fill="#FF8C00"/>
 
 </svg>
