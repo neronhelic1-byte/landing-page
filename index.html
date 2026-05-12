@@ -468,15 +468,15 @@
                 body: JSON.stringify({ email: email })
             });
             if (response.ok) {
-                form.innerHTML = '<div style="text-align:center;padding:20px 0;width:100%"><div style="font-size:32px;margin-bottom:16px">🎉</div><p id="tw" style="color:#FF8C00;font-weight:700;font-size:22px;min-height:36px;text-align:center;width:100%;display:block;"></p></div>';
+                form.innerHTML = '<div style="text-align:center;padding:20px 0;width:100%;display:flex;flex-direction:column;align-items:center;"><div style="font-size:32px;margin-bottom:16px">🎉</div><p id="tw" style="color:#FF8C00;font-weight:700;font-size:22px;min-height:36px;text-align:center;width:100%;"></p></div>';
                 const text = "Du bist dabei. Das ist erst der Anfang!";
-                let i = 0;
+                let i = text.length;
                 const el = document.getElementById('tw');
                 el.textContent = "";
                 const iv = setInterval(function() {
-                    if (i < text.length) {
-                        el.textContent += text[text.length - 1 - (text.length - 1 - i)];
-                        i++;
+                    if (i > 0) {
+                        i--;
+                        el.textContent = text.substring(i);
                     } else {
                         clearInterval(iv);
                     }
