@@ -1,49 +1,112 @@
 <!DOCTYPE html>
-<!-- saved from url=(0082)file:///Users/neronhelic/Hmtl.%20dabei.%20Kopie/dabei_landing_page_scrollable.html -->
-<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>dabei. – Entdecke was heute los ist</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
+    <title>dabei. — Entdecke was heute los ist</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+ 
         html, body {
             height: 100%;
         }
-
+ 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: #FFF5E9;
+            background: #F5EFE7;
             color: #000000;
             line-height: 1.6;
         }
-
-        /* HERO SECTION — Volle Viewport Höhe */
+ 
+        /* ── ANIMIERTE HINTERGRUND-KREISE ── */
+        .bg-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+ 
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 140, 0, 0.13);
+        }
+ 
+        .circle-1 {
+            width: 420px;
+            height: 420px;
+            top: -120px;
+            left: -120px;
+            animation: float1 9s ease-in-out infinite;
+        }
+ 
+        .circle-2 {
+            width: 280px;
+            height: 280px;
+            top: 35%;
+            right: -80px;
+            animation: float2 11s ease-in-out infinite;
+        }
+ 
+        .circle-3 {
+            width: 220px;
+            height: 220px;
+            bottom: 25%;
+            left: -50px;
+            animation: float3 10s ease-in-out infinite;
+        }
+ 
+        .circle-4 {
+            width: 180px;
+            height: 180px;
+            bottom: -60px;
+            right: 15%;
+            animation: float1 8s ease-in-out infinite reverse;
+        }
+ 
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-28px) scale(1.04); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(-12px); }
+        }
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(22px) scale(1.06); }
+        }
+ 
+        /* ── HERO SECTION ── */
         .hero-section {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: #FFF5E9;
+            background: transparent;
+            position: relative;
         }
-
+ 
         .hero-container {
             max-width: 600px;
             width: 100%;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
-
+ 
         .badge {
             display: inline-block;
-            background: #ff6a00;
+            background: #FF8C00;
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -53,7 +116,7 @@
             letter-spacing: 1px;
             margin-bottom: 32px;
         }
-
+ 
         .logo {
             font-size: 64px;
             font-weight: 600;
@@ -61,11 +124,11 @@
             margin-bottom: 12px;
             letter-spacing: -2px;
         }
-
+ 
         .logo-dot {
-            color: #ff6a00;
+            color: #FF8C00;
         }
-
+ 
         .slogan {
             font-size: 42px;
             font-weight: 600;
@@ -73,20 +136,20 @@
             line-height: 1.2;
             margin-bottom: 48px;
         }
-
+ 
         .description {
             font-size: 16px;
             color: #666666;
             margin-bottom: 48px;
             line-height: 1.7;
         }
-
+ 
         .email-form {
             display: flex;
             gap: 8px;
             margin-bottom: 32px;
         }
-
+ 
         .email-form input {
             flex: 1;
             padding: 16px 20px;
@@ -94,75 +157,40 @@
             border-radius: 6px;
             font-size: 15px;
             font-family: inherit;
-            background: #FAFAFA;
+            background: rgba(255,255,255,0.8);
             transition: all 0.2s;
         }
-
+ 
         .email-form input:focus {
             outline: none;
-            border-color: #ff6a00;
+            border-color: #FF8C00;
             background: white;
         }
-
+ 
         .email-form button {
-  padding: 16px 28px;
-  background: #ff6a00;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.4s ease;
-
-  /* NEU */
-  position: relative;
-  overflow: hidden;
-}
-        }/* Animation Zustand */
-.email-form button.loading {
-  width: 50px !important;
-  min-width: 50px !important;
-  height: 50px !important;
-  padding: 0 !important;
-  border-radius: 50% !important;
-  color: transparent;
-}
-
-/* Rollen Animation */
-@keyframes rollLeft {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(-120px) rotate(-360deg);
-  }
-}
-
-.email-form button.roll {
-  animation: rollLeft 0.8s ease forwards;
-  display: inline-block;
-}
-
+            padding: 16px 28px;
+            background: #FF8C00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+ 
         .email-form button:hover {
-            background: #e67e00;
+            background: #E67E00;
             transform: translateY(-2px);
         }
-
+ 
         .footer-text {
             font-size: 12px;
             color: #999999;
             margin-top: 24px;
         }
-
-        .footer-text a {
-            color: #ff6a00;
-            text-decoration: none;
-        }
-
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
-
+ 
         /* Scroll Hint */
         .scroll-hint {
             position: absolute;
@@ -173,37 +201,36 @@
             font-size: 12px;
             color: #999999;
             animation: bounce 2s infinite;
+            z-index: 1;
         }
-
+ 
         .scroll-hint svg {
             width: 20px;
             height: 20px;
             margin-top: 8px;
-            stroke: #ff6a00;
+            stroke: #FF8C00;
         }
-
+ 
         @keyframes bounce {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(10px);
-            }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
         }
-
-        /* FAQ SECTION */
+ 
+        /* ── FAQ SECTION ── */
         .faq-section {
             min-height: 100vh;
             padding: 80px 20px;
-            background: #FFF5E9;
-           
+            background: transparent;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 1;
         }
-
+ 
         .faq-wrapper {
             max-width: 600px;
             margin: 0 auto;
         }
-
+ 
         .faq-title {
             font-size: 28px;
             font-weight: 600;
@@ -211,36 +238,37 @@
             margin-bottom: 40px;
             text-align: center;
         }
-
+ 
         .faq-list {
             display: flex;
             flex-direction: column;
             gap: 0;
         }
-
+ 
         .faq-item {
             border: 1px solid #E5E5EA;
             border-top: none;
             border-radius: 0;
-            background: #FFF5E9;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
             transition: all 0.2s;
             cursor: pointer;
         }
-
+ 
         .faq-item:first-child {
             border-radius: 6px 6px 0 0;
             border-top: 1px solid #E5E5EA;
         }
-
+ 
         .faq-item:last-child {
             border-radius: 0 0 6px 6px;
         }
-
+ 
         .faq-item:hover {
-            border-color: #ff6a00;
-            background: #FFF5E9;
+            border-color: #FF8C00;
+            background: rgba(255,255,255,0.95);
         }
-
+ 
         .faq-question {
             padding: 16px 20px;
             display: flex;
@@ -250,139 +278,66 @@
             font-size: 15px;
             color: #000000;
         }
-
+ 
         .faq-toggle {
-            color: #ff6a00;
+            color: #FF8C00;
             font-size: 20px;
             font-weight: 300;
             transition: transform 0.2s;
         }
-
+ 
         .faq-item.active .faq-toggle {
             transform: rotate(45deg);
         }
-
+ 
         .faq-answer {
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.2s ease-out;
+            transition: all 0.3s ease-out;
         }
-
+ 
         .faq-item.active .faq-answer {
             padding: 0 20px 16px 20px;
             max-height: 500px;
         }
-
+ 
         .faq-answer p {
             font-size: 14px;
             color: #666666;
             line-height: 1.7;
         }
-
-        .faq-answer strong {
-            color: #000000;
-        }
-
-        /* Mobile Styles */
+ 
+        /* Mobile */
         @media (max-width: 480px) {
             .hero-section {
                 height: auto;
                 min-height: 100vh;
                 padding: 40px 20px;
             }
-
-            .logo {
-                font-size: 48px;
-            }
-
-            .slogan {
-                font-size: 32px;
-                margin-bottom: 32px;
-            }
-
-            .description {
-                font-size: 15px;
-                margin-bottom: 32px;
-            }
-
-            .email-form {
-                flex-direction: column;
-            }
-
-            .email-form button {
-                width: 100%;
-            }
-
-            .faq-section {
-                padding: 60px 20px;
-            }
-
-            .faq-title {
-                font-size: 22px;
-                margin-bottom: 30px;
-            }
-
-            .faq-question {
-                font-size: 14px;
-                padding: 14px 16px;
-            }
-
-            .scroll-hint {
-                display: none;
-            }
+            .logo { font-size: 48px; }
+            .slogan { font-size: 32px; margin-bottom: 32px; }
+            .email-form { flex-direction: column; }
+            .email-form button { width: 100%; }
+            .faq-section { padding: 60px 20px; }
+            .faq-title { font-size: 22px; margin-bottom: 30px; }
+            .faq-question { font-size: 14px; padding: 14px 16px; }
+            .scroll-hint { display: none; }
+            .circle-1 { width: 280px; height: 280px; }
+            .circle-2 { width: 200px; height: 200px; }
         }
-        .scroll-hint {
-  display: none;
-}
-
-#success-msg {
-  color: #ff6a00;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-}
-
-#writer-dot {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background: #ff6a00;
-  border-radius: 50%;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-#typed-text {
-  color: #ff6a00;
-}
-  body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #FFF5E9;
-  color: #000000;
-  line-height: 1.6;
-}
-    body {
-  cursor: none;
-}
-•⁠  ⁠{
-  cursor: none !important;
-}
-#custom-cursor {
-  position: fixed;
-  width: 14px;
-  height: 14px;
-  background: #ff6a00;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-}
-</style>
+    </style>
 </head>
 <body>
-    <div id="custom-cursor"></div>
-    
+ 
+    <!-- ANIMIERTE KREISE -->
+    <div class="bg-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+    </div>
+ 
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-container">
@@ -396,29 +351,29 @@
                 Eine App. Deine Stadt. Unendlich viele Möglichkeiten.
             </p>
             
-            <form id="email-form" class="email-form">
-  <input type="email" name="email" placeholder="deine@email.com" required>
-  <button type="submit" id="submit-btn">Anmelden</button>
-</form>
-         
-    <div id="success-msg" style="display:none; margin-top:20px;">
-  <span id="writer-dot"></span>
-  <span id="typed-text"></span>
-</div>
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <input 
+                    type="email" 
+                    placeholder="deine@email.com" 
+                    required
+                    aria-label="Email Adresse"
+                >
+                <button type="submit">Anmelden</button>
+            </form>
+            
             <p class="footer-text">
                 Kostenlos, spamfrei, jederzeit kündbar
             </p>
         </div>
-
-        <!-- Scroll Hint -->
+ 
         <div class="scroll-hint">
             <div>Scroll für mehr</div>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"></path>
+                <path d="M12 5v14M5 12l7 7 7-7"/>
             </svg>
         </div>
     </section>
-
+ 
     <!-- FAQ SECTION -->
     <section class="faq-section">
         <div class="faq-wrapper">
@@ -434,7 +389,7 @@
                         <p>Wir starten im Juni 2026 mit der Beta. Du bekommst Early Access und hilfst uns durch dein Feedback, dabei. besser zu machen. Das ist für uns essentiell.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Kostet dabei. etwas?</span>
@@ -444,7 +399,7 @@
                         <p>Komplett kostenlos. Dein Feedback bestimmt wie dabei. wird. Du hilfst uns das beste möglich zu machen.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Was muss ich als Beta-Tester machen?</span>
@@ -454,7 +409,7 @@
                         <p>Teste die App. Nutze sie im Alltag. Gib uns ehrliches Feedback: was funktioniert, was nervt, was fehlt. Das ist alles was wir brauchen.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Wie lange läuft die Beta?</span>
@@ -464,7 +419,7 @@
                         <p>Die Beta läuft von Juni bis Herbst 2026. Das gibt uns Zeit dein Feedback zu sammeln und die App zu verbessern. Im Herbst kommt dann die finale Version.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Werde ich für mein Feedback erwähnt?</span>
@@ -474,7 +429,7 @@
                         <p>Ja. Dein Name wird im App Launch erwähnt. Du bist ein Teil der dabei. Geschichte.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Wie kann ich mein Feedback geben?</span>
@@ -484,7 +439,7 @@
                         <p>Per Email, Chat oder direkt in der App. Wir sind offen für alles: Bugs, Ideen, Kritik. Sag uns was du denkst.</p>
                     </div>
                 </div>
-
+ 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <div class="faq-question">
                         <span>Brauche ich spezielle Hardware?</span>
@@ -497,91 +452,20 @@
             </div>
         </div>
     </section>
-
+ 
     <script>
         function handleSubmit(event) {
             event.preventDefault();
             const email = event.target.querySelector('input[type="email"]').value;
-            
-            
+            alert(`Danke! Wir schreiben dir an ${email} sobald dabei. startet.`);
+            event.target.reset();
+            event.target.querySelector('input[type="email"]').focus();
         }
-
+ 
         function toggleFAQ(element) {
             element.classList.toggle('active');
         }
     </script>
-<script>
-  const form = document.getElementById("email-form");
-  const successMsg = document.getElementById("success-msg");
-
-  form.addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-  try {
-    const response = await fetch("https://formspree.io/f/mlgaqleo", {
-      method: "POST",
-      body: data,
-      headers: {
-        "Accept": "application/json"
-      }
-    });
-
-    if (response.ok) {
-      const typedText = document.getElementById("typed-text");
-      const message = "Du bist dabei. Das ist erst der Anfang.";
-      let i = 0;
-
-      form.style.display = "none";
-      successMsg.style.display = "block";
-      typedText.textContent = "";
-
-      function typeWriter() {
-        if (i < message.length) {
-          typedText.textContent += message.charAt(i);
-          i++;
-          setTimeout(typeWriter, 45);
-        }
-      }
-
-      typeWriter();
-    } else {
-      alert("Fehler beim Senden. Bitte nochmal versuchen.");
-    }
-  } catch (error) {
-    alert("Verbindungsfehler. Bitte nochmal versuchen.");
-  }
-});
-</script>
-    <p style="text-align:center; margin-top:40px;">
-  ©️ 2026 dabei. 
-<a href="impressum.html" style="color:#ff6a00;">Impressum</a> | 
-<a href="datenschutz.html" style="color:#ff6a00;">Datenschutz</a>
-</p>
-<script>
-  const cursor = document.getElementById('custom-cursor');
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let currentX = 0;
-  let currentY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animate() {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
-
-    cursor.style.left = currentX + 'px';
-    cursor.style.top = currentY + 'px';
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-</script>
-</body></html>
+</body>
+</html>
+ 
